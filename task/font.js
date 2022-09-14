@@ -23,11 +23,11 @@ const font = () => {
 		.pipe(plumber({
 			errorHandler: notify.onError()
 		}))
-		//.pipe(newer(path.font.dest))
-		.pipe(fonter(app.fonter))
+		.pipe(newer(path.font.dest))
+		//.pipe(fonter(app.fonter))
 		.pipe(dest("./public/font/"))
-		//.pipe(ttf2woff2())
-		//.pipe(dest(path.font.dest));
+		.pipe(ttf2woff2())
+		.pipe(dest(path.font.dest));
 }
 
 module.exports = font;
