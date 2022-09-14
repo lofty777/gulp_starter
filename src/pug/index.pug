@@ -1,0 +1,18 @@
+extends layout/app
+
+block page 
+    include chunk/header
+
+    h1.title Main page
+    h2.subtle Page
+
+  
+    img(src='img/1.jpg', alt="berries", width="500")
+
+    p Hello! 
+
+    ul.news 
+        each item in news 
+            li= item.name
+
+    include chunk/footer

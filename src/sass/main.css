@@ -1,0 +1,45 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-size: 22px;
+  font-family: Arial;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  body {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .title {
+    text-align: center;
+  }
+}
+
+.news {
+  list-style: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+  .news {
+    display: block;
+  }
+}
+/*# sourceMappingURL=main.css.map */
