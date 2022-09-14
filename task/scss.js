@@ -21,7 +21,7 @@ const webpCss = require("gulp-webp-css");
 
 // Обработка SCSS
 const scss = () => {
-	return src(path.scss.src, { sourcemaps: true })
+	return src(path.scss.src, { sourcemaps: app.isDev })
 		.pipe(plumber({
 			errorHandler: notify.onError()
 		}))
@@ -32,11 +32,11 @@ const scss = () => {
 		.pipe(shorthand())
 		.pipe(groupCssMediaQueries())
 		.pipe(size({ title: "main.scss" }))
-		.pipe(dest(path.scss.dest, { sourcemaps: true }))
+		.pipe(dest(path.scss.dest, { sourcemaps: app.isDev }))
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(csso())
 		.pipe(size({ title: "main.min.scss" }))
-		.pipe(dest(path.scss.dest, { sourcemaps: true }));
+		.pipe(dest(path.scss.dest, { sourcemaps: app.isDev }));
 }
 
 module.exports = scss;

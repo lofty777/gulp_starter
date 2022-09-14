@@ -11,6 +11,7 @@ const imagemin = require("gulp-imagemin");
 const size = require("gulp-size");
 const newer = require("gulp-newer");
 const webp = require("gulp-webp");
+const gulpif = require("gulp-if");
  
 
 
@@ -28,7 +29,7 @@ const img = () => {
 		.pipe(dest(path.img.dest))
 		.pipe(src(path.img.src))
 		.pipe(newer(path.img.dest))
-		.pipe(imagemin(app.imagemin))
+		.pipe(gulpif(app.isProd, imagemin(app.imagemin)))
 		.pipe(size({ title: "After min" }))
 		.pipe(dest(path.img.dest));
 }

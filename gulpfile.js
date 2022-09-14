@@ -3,6 +3,7 @@ const browserSync = require('browser-sync').create();
 
 //Конфигурация
 const path = require(".//config/path.js");
+const app = require(".//config/app.js");
 
 //Задачи
 const clear = require('./task/clear.js');
@@ -31,6 +32,16 @@ const watcher = () => {
 	watch(path.font.watch, font).on("all", browserSync.reload);
 }
 
+const build = series(
+	clear,
+	parallel(pug, scss, js, img, font)
+);
+
+const dev = series(
+	build,
+	parallel(watcher, server)
+);
+
 // Задачи
 exports.pug = pug;
 exports.scss = scss;
@@ -40,8 +51,6 @@ exports.font = font;
 
 
 // Сборка
-exports.dev = series(
-	clear,
-	parallel (pug, scss, js, img, font),
-	parallel(watcher, server)
-);
+exports.default = app.isProd
+	? build
+	: dev;

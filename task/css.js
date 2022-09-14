@@ -20,7 +20,7 @@ const webpCss = require("gulp-webp-css");
 
 // Обработка CSS
 const css = () => {
-	return src(path.css.src, { sourcemaps: true })
+	return src(path.css.src, { sourcemaps: app.isDev })
 		.pipe(plumber({
 			errorHandler: notify.onError()
 		}))
@@ -31,11 +31,11 @@ const css = () => {
 		.pipe(shorthand())
 		.pipe(groupCssMediaQueries())
 		.pipe(size({ title: "main.css" }))
-		.pipe(dest(path.css.dest, { sourcemaps: true }))
+		.pipe(dest(path.css.dest, { sourcemaps: app.isDev }))
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(csso())
 		.pipe(size({ title: "main.min.css" }))
-		.pipe(dest(path.css.dest, { sourcemaps: true }));
+		.pipe(dest(path.css.dest, { sourcemaps: app.isDev }));
 }
 
 module.exports = css;
