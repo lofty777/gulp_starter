@@ -11,11 +11,6 @@ const newer = require("gulp-newer");
 const fonter = require("gulp-fonter");
 const ttf2woff2 = require("gulp-ttf2woff2");
 
- 
-
-console.log(path.font.src)
-console.log(path.font.dest)
-
 
 // Обработка Font
 const font = () => {
